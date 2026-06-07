@@ -40,6 +40,6 @@ jobs:
 
                     sudo docker pull gagandev0/ironman-node:latest
 
-                    sudo docker run -d --name ironman-node --restart unless-stopped -p 3000:3000 gagandev0
+                    sudo docker run -d --name ironman-node --restart unless-stopped -p 3000:3000 gagandev0/ironman-node:latest
 
                     sudo docker image prune -f
