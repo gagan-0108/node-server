@@ -36,9 +36,10 @@ jobs:
                 username: ubuntu
                 key: ${{ secrets.PRIVATE_KEY }}
                 script: |
-                    export NVM_DIR="$HOME/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    cd /home/ubuntu/node-server
-                    git pull
-                    npm install
-                    pm2 restart 0
+                    docker rm -f ironman-node || true
+
+                    docker pull gagandev0/ironman-node:latest
+
+                    docker run -d --name ironman-node --restart unless-stopped -p 3000:3000 gagandev0
+
+                    docker image prune -f
