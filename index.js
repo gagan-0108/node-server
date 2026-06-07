@@ -6,7 +6,7 @@ app.use(express.json());
 const port = 3000;
 
 app.get("/", (_, res) => {
-	res.json({ message: "server is up an running" });
+	res.json({ message: "server is up an running" , status: "mst"});
 });
 
 app.listen(port, () => {
