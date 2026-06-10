@@ -1,0 +1,20 @@
+services: 
+  nodejs-server: 
+    image: gagandev0/ironman-node
+    deploy:
+      replicas: 5
+    container_name: nodejs-server
+    networks: 
+      - internals
+      
+  caddy: 
+    image: caddy:latest
+    volumes: 
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro 
+    networks:
+      - internals
+
+networks: 
+  internals: 
+    driver: bridge
+      
